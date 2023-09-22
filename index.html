@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThermoNuclearExplosion</title>
+    <style>
+        h1, h2, h3 {
+            text-align: center;
+            font-size: xxx-large;
+            font-family: 'Consolas';
+        }
+    </style>
+</head>
+<body>
+    <h1 id="h0">ThermoNuclearExplosion</h1>
+    <h1 id="h1">Electrons</h1>
+    <h2 id="h2">Neutrons</h2>
+    <h3 id="h3">Radiation</h3>
+    <h3 id="h4">Time</h3>
+
+    <script>
+        let i = 2;
+        let n = 2;
+        let sv = Math.floor(Math.random() * 5);
+        let x = " Sv";
+        let msv = 1000;
+        let gsv = 10000000;
+        let tsv = 100000000;
+        let zsv = 1000000000;
+        let s = 0;
+        const time = document.getElementById("h4");
+        const rad = document.getElementById("h3");
+        const neut = document.getElementById("h2");
+        const elec = document.getElementById("h1");
+
+        function add() {
+            sv = Math.floor(n * i / 500);
+            if (sv >= msv) {
+                x = " MSv";
+            }
+            if (sv >= gsv) {
+                x = " GSv";
+            }
+            if (sv >= tsv) {
+                x = " TSv";
+            }
+            if (sv >= zsv) {
+                x = " ZSv";
+            }
+            n += Math.floor(Math.random(0) * 150);
+            i += Math.floor(Math.random(0) * 5);
+        }
+
+        function timer() {
+            s += 1;
+            setTimeout(timer, 999999)
+        }
+
+        function start() {
+            add();
+            timer();
+            elec.innerHTML = i + " Electrons";
+            neut.innerHTML = n + " Neutrons";
+            rad.innerHTML = sv + x;
+            time.innerHTML = s + "ms";
+            setTimeout(start, 0);
+        }
+        start();
+    </script>
+</body>
+</html>
